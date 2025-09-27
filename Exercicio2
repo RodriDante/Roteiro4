@@ -1,0 +1,47 @@
+using System;
+
+public abstract class Funcionario
+{
+    public string Nome { get; set; }
+    public int SalarioBase { get; set; }
+
+    public Funcionario(string nome, int salarioBase)
+    {
+        Nome = nome;
+        SalarioBase = salarioBase;
+    }
+
+    public abstract int CalcularSalario();
+}
+
+public class Gerente : Funcionario
+{
+    public Gerente(string nome, int salarioBase) : base(nome, salarioBase) { }
+
+    public override int CalcularSalario()
+    {
+        return SalarioBase + 1000;
+    }
+}
+
+public class Programador : Funcionario
+{
+    public Programador(string nome, int salarioBase) : base(nome, salarioBase) { }
+
+    public override int CalcularSalario()
+    {
+        return SalarioBase + 650;
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Funcionario gerente = new Gerente("Luna", 4300);
+        Funcionario programador = new Programador("Rodri", 3500);
+
+        Console.WriteLine($"O nome e {gerente.Nome}, salario do gerente: {gerente.CalcularSalario()}");
+        Console.WriteLine($"O nome e {programador.Nome}, salario do programador: {programador.CalcularSalario()}");
+    }
+}
