@@ -1,0 +1,48 @@
+public class Pagamento
+{
+    public virtual void PrecessarPagamento()
+    {
+        Console.WriteLine("Processar Pagamento");
+
+    }
+}
+public class CartaoCredito : Pagamento
+{
+    public override void PrecessarPagamento() {
+        Console.WriteLine("Pagamento no cartao de credito");
+
+}
+}
+public class Boleto : Pagamento
+{
+    public override void PrecessarPagamento()
+    {
+        Console.WriteLine("Pagamento no Boleto");
+
+    }
+}
+public class Pix : Pagamento
+{
+    public override void PrecessarPagamento()
+    {
+        Console.WriteLine("Pagamento no pix");
+
+    }
+}
+public class Program
+{
+    static void Main()
+    {
+        List<Pagamento> pagamentos = new List<Pagamento>
+        {
+            new Pix(),
+            new Boleto(),
+            new CartaoCredito()
+        };
+        foreach (Pagamento p in pagamentos)
+        {
+            p.PrecessarPagamento();
+        }
+        Console.ReadLine();
+    }
+}
